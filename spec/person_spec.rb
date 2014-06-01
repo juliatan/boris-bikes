@@ -15,7 +15,7 @@ describe Person do
 
 	it 'should have a bike if he rents it from docking station' do
 		station = double :station
-		expect(station).to receive(:release_bike).and_return(:bike)
+		expect(station).to receive(:release).and_return(:bike)
 		person.rents_bike_from(station)
 		expect(person).to have_bike
 	end
@@ -31,7 +31,7 @@ describe Person do
 		bike = double :bike
 		station = double :station
 		person = Person.new(bike)
-		expect(station).to receive(:dock_bike)
+		expect(station).to receive(:dock)
 		person.returns_bike_to(station)
 		expect(person).not_to have_bike
 	end

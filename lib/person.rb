@@ -13,11 +13,11 @@ class Person
 	end
 
 	def rents_bike_from(station)
-		@bike = station.release_bike
+		@bike = station.release
 	end
 
 	def returns_bike_to(station)
-		station.dock_bike
+		station.dock
 		@bike = nil
 	end
 end
