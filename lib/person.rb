@@ -13,6 +13,7 @@ class Person
 	end
 
 	def rents_bike_from(station)
+		raise GreedyPerson.new if self.has_bike?
 		@bike = station.release(station.available_bikes.first)
 	end
 

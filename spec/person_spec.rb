@@ -1,4 +1,5 @@
 require 'person'
+require 'errors'
 
 describe Person do
 	
@@ -9,7 +10,7 @@ describe Person do
 		expect(person).not_to have_bike
 	end
 
-	it 'can have a bike' do
+	it 'can have a bike when initializing' do
 		person = Person.new(:bike)
 		expect(person).to have_bike
 	end
@@ -25,6 +26,15 @@ describe Person do
 		station.holder << bike
 		person.rents_bike_from(station)
 		expect(person).not_to have_bike
+	end
+
+	it 'can only have one bike' do
+		bike = double :bike, broken?: false
+		bike2 = double :bike2, broken?: false
+		station.dock(bike)
+		station.dock(bike2)
+		person.rents_bike_from(station)
+		expect{person.rents_bike_from(station)}.to raise_error(GreedyPerson)
 	end
 
 	it 'should break bike when he falls' do
