@@ -5,7 +5,7 @@ class Bike
 	end
 
 	def broken?
-		@break
+		@break # instance variable - this is default state to be used everywhere
 	end
 
 	def break!
@@ -13,7 +13,7 @@ class Bike
 		self
 	end
 
-	def fix!
+	def fix! # bang method, something dangerous going to happen
 		@break = false
 		self
 	end
