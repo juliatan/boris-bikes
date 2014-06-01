@@ -21,7 +21,6 @@ Technologies used
 
 * Ruby
 * RSpec
-* Git
 
 How to use
 ----------
