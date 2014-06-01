@@ -5,6 +5,7 @@ class ContainerHolder; include BikeContainer; end
 describe BikeContainer do
 	
 	let(:bike_container) {ContainerHolder.new}
+	let(:bike) {Bike.new}
 
 	it 'should be able to store bikes' do
 		expect(bike_container.holder).not_to be_nil
@@ -26,6 +27,11 @@ describe BikeContainer do
 	it 'should know when it is full' do
 		20.times {bike_container.dock(:bike)}
 		expect(bike_container).to be_full
+	end
+
+	it 'should not allow docking of bikes if at capacity' do
+		20.times { bike_container.dock(:bike) }
+		expect{ bike_container.dock(:bike) }.to raise_error(FullContainer)
 	end
 
 end

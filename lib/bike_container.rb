@@ -40,6 +40,7 @@ module BikeContainer
 	end
 
 	def dock(bike)
+		raise FullContainer.new if full?
 		holder << bike
 	end
 
