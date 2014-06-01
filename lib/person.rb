@@ -18,7 +18,7 @@ class Person
 	end
 
 	def returns_bike_to(station)
-		station.dock
+		station.dock(@bike)
 		@bike = nil
 	end
 end

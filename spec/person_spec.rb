@@ -10,7 +10,7 @@ describe Person do
 		expect(person).not_to have_bike
 	end
 
-	it 'can have a bike when initializing' do
+	it 'can have a bike' do
 		person = Person.new(:bike)
 		expect(person).to have_bike
 	end

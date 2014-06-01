@@ -13,14 +13,14 @@ describe Garage do
 	it 'should be able to accept broken bikes from van' do
 		a = bike.break!
 		van.holder << a
-		garage.accept_broken_bikes_from(van)
+		garage.accepts_broken_bikes_from(van)
 		expect(garage.bike_count).to eq 1
 	end
 
 	it 'should automatically fix broken bikes when accepted by garage' do
 		a = bike.break!
 		van.holder << a
-		garage.accept_broken_bikes_from(van)
+		garage.accepts_broken_bikes_from(van)
 		expect(bike).not_to be_broken
 	end
 

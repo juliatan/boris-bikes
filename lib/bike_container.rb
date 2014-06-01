@@ -2,11 +2,6 @@ module BikeContainer
 
 	DEFAULT_CAPACITY = 20
 
-	# def initialize(options = {})
-	# 	self.capacity = options.fetch(:capacity, capacity)
-	# 	# same as: capacity=(options.fetch(:capacty, capacity))
-	# end
-
 	def holder
 		@bikes ||= []
 	end
@@ -15,6 +10,7 @@ module BikeContainer
 		@capacity ||= DEFAULT_CAPACITY
 	end
 
+	# accessor method
 	def capacity=(value)
 		@capacity = value
 	end
@@ -39,12 +35,14 @@ module BikeContainer
 		end
 	end
 
-	def dock(bike)
+	def dock(bike = nil)
+		raise MissingObject.new if bike.nil? # note: this is an ArgumentError, which needs to come first
 		raise FullContainer.new if full?
 		holder << bike
 	end
 
-	def release(bike)
+	def release(bike = nil)
+		raise EmptyContainer.new if holder.empty?
 		holder.delete(bike)
 	end
 end
