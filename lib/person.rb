@@ -13,7 +13,7 @@ class Person
 	end
 
 	def rents_bike_from(station)
-		@bike = station.release
+		@bike = station.release(station.available_bikes.first)
 	end
 
 	def returns_bike_to(station)

@@ -2,7 +2,8 @@ require 'person'
 
 describe Person do
 	
-	let(:person) {Person.new()}
+	let(:person) {Person.new}
+	let(:station) {Station.new}
 
 	it 'has no bike as default' do
 		expect(person).not_to have_bike
@@ -14,10 +15,16 @@ describe Person do
 	end
 
 	it 'should have a bike if he rents it from docking station' do
-		station = double :station
 		expect(station).to receive(:release).and_return(:bike)
 		person.rents_bike_from(station)
 		expect(person).to have_bike
+	end
+
+	it 'should only be able to rent fixed bikes' do
+		bike = double :bike, broken?: true
+		station.holder << bike
+		person.rents_bike_from(station)
+		expect(person).not_to have_bike
 	end
 
 	it 'should break bike when he falls' do
