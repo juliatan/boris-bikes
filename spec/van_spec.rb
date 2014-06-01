@@ -24,9 +24,21 @@ describe Van do
 	end
 
 	it 'can checkout fixed bikes from the garage' do
-		garage.holder << bike
+		garage.dock(bike)
 		van.checkout_fixed_bikes_from(garage)
 		expect(van.holder).to include bike
+	end
+
+	it 'does not accept broken bike if at capacity' do
+		6.times { van.dock(Bike.new.break!) }
+		station.dock(Bike.new.break!)
+		expect{ van.checkout_broken_bikes_from(station) }.to raise_error(FullContainer)
+	end
+
+	it 'does not accept fixed bike if at capacity' do
+		6.times { van.dock(Bike.new) }
+		garage.dock(Bike.new)
+		expect{ van.checkout_fixed_bikes_from(garage) }.to raise_error(FullContainer)
 	end
 
 end

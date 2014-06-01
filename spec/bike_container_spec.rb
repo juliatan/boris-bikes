@@ -1,5 +1,6 @@
 require 'bike_container'
 
+# since we can't instantiate a module, need to create an artificial class for test purposes
 class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do

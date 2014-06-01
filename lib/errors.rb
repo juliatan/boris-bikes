@@ -10,14 +10,15 @@ class FullContainer < RuntimeError
 	end
 end
 
+class EmptyContainer < RuntimeError
+	def initialize(message = "There are no bikes, sorry!")
+		super
+	end
+end
+
 class MissingObject < ArgumentError
 	def initialize(message = "Empty argument. You need to dock a bike!")
 		super
 	end
 end
 
-class EmptyContainer < ArgumentError
-	def initialize(message = "There are no bikes, sorry!")
-		super
-	end
-end

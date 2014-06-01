@@ -24,15 +24,11 @@ module BikeContainer
 	end
 
 	def broken_bikes
-		holder.select do |bike|
-			bike.broken?
-		end
+		holder.select { |bike| bike.broken? }
 	end
 
 	def available_bikes
-		holder.select do |bike|
-			!bike.broken?
-		end
+		holder.reject { |bike| bike.broken? }
 	end
 
 	def dock(bike = nil)
@@ -44,5 +40,6 @@ module BikeContainer
 	def release(bike = nil)
 		raise EmptyContainer.new if holder.empty?
 		holder.delete(bike)
+		# can be replaced with pop so no argument necessary
 	end
 end
