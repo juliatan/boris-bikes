@@ -16,4 +16,11 @@ class Van
 		end
 	end
 
+	def checkout_fixed_bikes_from(garage)
+		garage.available_bikes.each do |fixed_bike|
+			garage.release(fixed_bike)
+			self.holder << fixed_bike
+		end
+	end
+
 end

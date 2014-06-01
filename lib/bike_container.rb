@@ -19,8 +19,24 @@ module BikeContainer
 		@capacity = value
 	end
 
+	def bike_count
+		holder.count
+	end
+
 	def full?
-		holder.count == capacity
+		bike_count == capacity
+	end
+
+	def broken_bikes
+		holder.select do |bike|
+			bike.broken?
+		end
+	end
+
+	def available_bikes
+		holder.select do |bike|
+			!bike.broken?
+		end
 	end
 
 	def dock(bike)

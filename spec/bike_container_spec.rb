@@ -6,10 +6,6 @@ describe BikeContainer do
 	
 	let(:bike_container) {ContainerHolder.new}
 
-	# it 'should be able to set maximum capacity upon initialisation' do
-	# 	expect(bike_container.capacity).to eq 10
-	# end
-
 	it 'should be able to store bikes' do
 		expect(bike_container.holder).not_to be_nil
 	end
