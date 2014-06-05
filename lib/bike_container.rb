@@ -1,6 +1,7 @@
 module BikeContainer
 
 	DEFAULT_CAPACITY = 20
+	BROKEN_BIKES = Proc.new { |bike| bike.broken? }
 
 	def holder
 		@bikes ||= []
@@ -24,11 +25,11 @@ module BikeContainer
 	end
 
 	def broken_bikes
-		holder.select { |bike| bike.broken? }
+		holder.select(&BROKEN_BIKES)
 	end
 
 	def available_bikes
-		holder.reject { |bike| bike.broken? }
+		holder.reject(&BROKEN_BIKES)
 	end
 
 	def dock(bike = nil)
