@@ -1,5 +1,5 @@
 Boris Bikes
-=================
+===========
 
 The goal of this project was to introduce us to Object-Oriented Programming (OOP) and show us the very basics of Object-Oriented Design (OOD).
 
@@ -16,6 +16,12 @@ We creating a simple system for managing Boris Bikes in London. Our system keeps
 <b>Module</b>
 - BikeContainer (used by Garage, Station and Van classes)
 
+Objectives
+----------
+
+- Introduction to Object-Oriented Programming (OOP) and the basics of Object-Oriented Design (OOD)
+- Introduction to test driven development using RSpec
+
 Technologies used
 -----------------
 
@@ -26,5 +32,18 @@ How to use
 ----------
 
 ```shell
+git clone git@github.com:juliatan/boris-bikes.git
+cd boris-bikes
+irb
 require './lib/boris_bikes'
+```
+
+Create new objects for each of the various classes and move bikes around the garages, stations and vans.
+
+How to run tests
+----------------
+
+```shell
+cd boris-bikes
+rspec
 ```
